@@ -1,0 +1,95 @@
+﻿<UserControl  x:Class="LoginRegister.View.AddDiaNoLectivo"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:ui="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:local="clr-namespace:LoginRegister.View"
+      mc:Ignorable="d" 
+      d:DesignHeight="450" d:DesignWidth="800">
+    <Grid VerticalAlignment="Center" HorizontalAlignment="Center" Height="446" Width="400">
+
+        <!-- Definir las filas del grid para distribuir los elementos -->
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="136.877" />
+            <ui:RowDefinition Height="144.123"/>
+            <!-- Para el botón -->
+        </Grid.RowDefinitions>
+
+        <!-- Título -->
+        <TextBlock 
+            Text="Dia No Lectivo" 
+            FontSize="28" 
+            FontWeight="SemiBold" 
+            Foreground="BlueViolet"
+            HorizontalAlignment="Left" 
+            Margin="117,39,0,1" 
+            Grid.Row="0"/>
+
+        <!-- Campo Nombre -->
+        <TextBlock 
+            Text="Fecha"
+            Foreground="Purple"
+            VerticalAlignment="Top"
+            HorizontalAlignment="Left"
+            Margin="174,31,0,0"
+            FontSize="21" 
+            IsHitTestVisible="False"
+            ui:Grid.Row="5"/>
+
+        <!-- Etiqueta de Motivo -->
+        <TextBlock 
+    Text="Motivo"
+    Foreground="Purple"
+    FontSize="21"
+    Margin="0,99,0,10"
+    ui:Grid.Row="5"
+    HorizontalAlignment="Center" />
+
+        <!-- Cuadro de texto para escribir el motivo -->
+        <TextBox 
+            Text="{Binding Motivo, Mode=TwoWay}" 
+            Width="200"
+            Height="25"
+            Margin="117,137,0,0"
+            ui:Grid.Row="5"
+            HorizontalAlignment="Left"
+            VerticalAlignment="Top" ui:Grid.RowSpan="2"/>
+
+        <DatePicker 
+            SelectedDate="{Binding Fecha, Mode=TwoWay}" 
+            Name="myDatePicker" 
+            Width="200" 
+            HorizontalAlignment="Left" 
+            VerticalAlignment="Top" 
+            ui:Grid.Row="5" 
+            Margin="117,59,0,0" Height="28"/>
+
+
+
+
+        <!-- Botón de Añadir Dia No Lectivo, ubicado en su propia fila -->
+        <ui:Button 
+            Command="{Binding AddCommand, Mode=OneWay}"
+            Content="Añadir Dia No Lectivo"
+            Background="Purple" 
+            Foreground="White"
+            Width="200" 
+            Height="50" 
+            HorizontalAlignment="Center" 
+            VerticalAlignment="Top" 
+            ui:Grid.Row="6"
+            FontSize="16" Margin="0,72,0,0">
+            <ui:Button.Effect>
+                <DropShadowEffect Color="Black" Direction="270" BlurRadius="10" ShadowDepth="4"/>
+            </ui:Button.Effect>
+        </ui:Button>
+
+
+    </Grid>
+</UserControl>

@@ -1,0 +1,133 @@
+alumno
+DNI
+nombre
+apellido
+curso
+prof_asociado
+
+
+profesor
+DNI
+nombre
+apellido
+ID_DPT
+
+
+proyecto
+ID
+creador
+prof_asociado
+nombre
+desc
+status
+fecha
+id dpt
+fecha presentar
+aula presentar
+
+
+reunion
+id
+id alumno
+id profe
+id proyecto
+fecha
+aula
+
+departamento
+nombre
+id
+id jefe dpto
+fecha fin propuesta
+fecha entrega
+
+
+
+
+
+usuario puede registrar como alumno/profesor
+Como usuario quiero poder registrarme como alumno/profesor para acceder a la aplicacion
+
+alumno puede enviar propuesta 
+Como alumno quiero poder enviar una propuesta para que pueda ser revisada
+
+profesores aceptan o deniegan la propuesta
+Como profesor quiero poder aceptar o denegar propuestas para notificar al alumno
+
+si deniegan plazo de 10 días/modificar
+Como alumno quiero poder modificar la propuesta si es denegada para corregir los fallos
+
+tutor ver sus alumnos
+Como profesor quiero poder ver a los alumnos que tengo asignados para gestionar los proyectos
+
+profesor puede dar alumnos
+Como profesor quiero poder mover un alumno asignado a otro profesor 
+
+
+
+
+
+profesor si es del mismo depto. puede ver la propuesta
+	titulo
+	descripción
+	tipo de proyecto
+
+
+
+registro con el usuario de racima y correo
+inicio sesión con uri
+
+
+admin define fecha entrega
+Como administrador quiero poder definir una fecha de entrega para que los alumnos entregen las propuestas
+
+
+
+
+
+si alumno no aprueba todas las asignaturas, recuperaciones hasta junio
+		si aprueba presentara su trabajo en enero
+
+dos calendarios
+	si aprueba todo en la primera recuperación va a empresas y hace el trabajo de marzo a junio
+	si aprueba en las recuperaciones de junio va a empresas de octubre a enero y expone en enero
+
+
+
+
+
+
+
+si pasa el plazo se genera una
+
+aleatorio asigna tutor a alumno
+
+
+poder ver otros alumnos, trabajo y tutor designado
+
+
+
+
+tutor marca fecha de tutoría cada 2 semanas con calendario(sitio/hora o Google meet)
+
+fecha limite
+
+solución final(incluye análisis, diseño, pruebas y resultados)
+
+admin designa
+	tribunal
+		jefe depto.
+		tutor
+		un miembro(profe del ciclo)(revisión de horarios)
+
+la presentación lleva signada una fecha, horario y aula
+debe incluir instrucciones
+
+definir rubrica
+
+el tribunal guarda la nota
+
+si se suspende se vuelve a presentar el mismo proyecto en enero
+
+archivar proyectos
+

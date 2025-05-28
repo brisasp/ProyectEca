@@ -1,0 +1,37 @@
+.reserva-card {
+  background-color: #1c1c1c; /* Fondo oscuro */
+  color: white;              /* Texto blanco */
+  border: 1px solid #444;
+  border-radius: 12px;
+  padding: 20px;
+  margin: 15px;
+  width: 320px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+  transition: transform 0.2s ease;
+}
+
+.reserva-card:hover {
+  transform: translateY(-5px);
+}
+
+.reserva-card h3 {
+  margin-top: 0;
+  font-size: 20px;
+  color: #28a745;
+}
+
+.reserva-card p {
+  margin: 8px 0;
+}
+
+.estado-pendiente {
+  color: orange;
+}
+
+.estado-aprobada {
+  color: #28a745;
+}
+
+.estado-rechazada {
+  color: red;
+}
