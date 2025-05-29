@@ -30,6 +30,7 @@ export class PrincipalComponent implements OnInit{
   mostrarFormulario = false;
  reservasAgrupadas: { [fecha: string]: any[] } = {};
  fechaFiltro: string = '';
+  fechaSeleccionada: string = '';
  reservasTotales: any[] = [];
 
   constructor(private reservaService: ReservaService, private router: Router) {}
@@ -78,6 +79,14 @@ toggleFormulario() {
     this.mostrarFormulario = !this.mostrarFormulario;
   }
 
+  onReservaCreada() {
+    this.mostrarFormulario = false;
+    // recargar reservas o lo que necesites
+  }
+
+  abrirFormulario() {
+    this.mostrarFormulario = true;
+  }
 cerrarFormulario() {
   this.mostrarFormulario = false;
 }

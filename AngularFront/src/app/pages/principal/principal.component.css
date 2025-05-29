@@ -76,6 +76,21 @@
   transition: background-color 0.3s ease;
 }
 
+.modal-backdrop-custom {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  color: white;
+  background-color: rgba(0, 0, 0, 0.6);
+  z-index: 1050;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+
 .header {
   display: flex;
   justify-content: space-between;

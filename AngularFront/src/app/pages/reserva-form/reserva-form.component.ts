@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Output } from '@angular/core';
+import { Component, EventEmitter,Input ,Output } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 
@@ -11,6 +11,7 @@ import { FormsModule } from '@angular/forms';
 
 })
 export class ReservaFormComponent {
+  @Input() fechaSeleccionada: string = '';
   @Output() reservaCreada = new EventEmitter<any>();
 
   reserva = {
@@ -19,10 +20,16 @@ export class ReservaFormComponent {
     horaFin: '',
     grupo: '',
     nombreProfesor: '',
+    correo: '', 
     estado: 0 // Pendiente por defecto
   };
+ngOnInit(): void {
+    this.reserva.fecha = this.fechaSeleccionada;
+  }
 
-  enviarFormulario() {
-    this.reservaCreada.emit(this.reserva);
+  crearReserva() {
+    // Aquí haces la llamada a la API
+    console.log('Reserva creada', this.reserva);
+    this.reservaCreada.emit();
   }
 }
