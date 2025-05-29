@@ -5,5 +5,5 @@ export interface Reserva {
   horaFin: string;         // ejemplo: "12:00"
   grupo: string;
   nombreProfesor: string;
-  estado: number;          // 0 = Pendiente, 1 = Aprobada, 2 = Rechazada
+  estado: 'Pendiente' | 'Aprobada' | 'Rechazada';          // 0 = Pendiente, 1 = Aprobada, 2 = Rechazada
 }

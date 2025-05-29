@@ -3,12 +3,14 @@
   <p><strong>Fecha:</strong> {{ reserva.fecha | date:'fullDate' }} a las {{ reserva.horaInicio }} - {{ reserva.horaFin }}</p>
   <p><strong>Profesor:</strong> {{ reserva.nombreProfesor }}</p>
   <p><strong>Grupo:</strong> {{ reserva.grupo }}</p>
-  <p><strong>Estado:</strong> 
-    <span [ngClass]="{
-      'estado-pendiente': reserva.estado === 0,
-      'estado-aprobada': reserva.estado === 1,
-      'estado-rechazada': reserva.estado === 2
-    }">
-    </span>
+<p><strong>Estado:</strong> 
+  <span [ngClass]="{
+    'estado-pendiente': getEstadoTexto(reserva.estado) === 'Pendiente',
+    'estado-aprobada': getEstadoTexto(reserva.estado) === 'Aprobada',
+    'estado-rechazada': getEstadoTexto(reserva.estado) === 'Rechazada'
+  }">
+    {{ getEstadoTexto(reserva.estado) }}
+  </span>
+
   </p>
 </div>

@@ -18,5 +18,11 @@ export class ReservaComponent implements OnInit  {
   ngOnInit(): void {
     console.log('Reserva recibida:', this.reserva);
     }
+    getEstadoTexto(estado: string): string {
+    return estado; // porque ya es un string como "Pendiente", "Aprobada", "Rechazada"
   }
+
+  }
+
+
 

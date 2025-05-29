@@ -1,4 +1,30 @@
-<div class="listado-reservas">
-  <app-reserva *ngFor="let reserva of reservasList" [reserva]="reserva"></app-reserva>
+<div class="boton-superior-centrado">
+  <button class="add-button" (click)="mostrarFormulario = true">
+    <span class="icono">➕</span>
+    <span>Hacer reserva</span>
+  </button>
 </div>
+
+<app-reserva-form
+  *ngIf="mostrarFormulario"
+  (reservaCreada)="guardarReserva($event)"
+  class="modal-contenedor">
+</app-reserva-form>
+<div class="modal-fondo" *ngIf="mostrarFormulario" (click)="cerrarFormulario()"></div>
+
+<div class="buscador-fecha">
+  <label for="filtroFecha">Buscar por fecha:</label>
+  <input type="date" id="filtroFecha" [(ngModel)]="fechaFiltro" (change)="filtrarPorFecha()" />
+  <button class="limpiar-btn" *ngIf="fechaFiltro" (click)="limpiarFiltro()">❌</button>
+</div>
+
+
+<div *ngFor="let grupo of reservasAgrupadas | keyvalue">
+  <h2 class="titulo-dia">{{ grupo.key | date: 'fullDate' }}</h2>
+  <div class="grupo-reservas">
+    <app-reserva *ngFor="let reserva of grupo.value" [reserva]="reserva"></app-reserva>
+  </div>
+</div>
+
+
 

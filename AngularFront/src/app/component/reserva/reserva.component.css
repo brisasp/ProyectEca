@@ -3,11 +3,12 @@
   color: white;              /* Texto blanco */
   border: 1px solid #444;
   border-radius: 12px;
-  padding: 20px;
-  margin: 15px;
-  width: 320px;
+  padding: 16px;
+  margin: 10px;
+  width: 260px;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
   transition: transform 0.2s ease;
+  font-size: 14px;
 }
 
 .reserva-card:hover {
@@ -16,8 +17,8 @@
 
 .reserva-card h3 {
   margin-top: 0;
-  font-size: 20px;
-  color: #28a745;
+  font-size: 18px;
+  color: #ffffff;
 }
 
 .reserva-card p {

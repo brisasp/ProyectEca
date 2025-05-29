@@ -1,29 +1,115 @@
-.add-button {
-  padding: 10px 20px;
-  font-size: 16px;
-  text-decoration: none;
-  background-color: #28a745;
-  color: white;
-  border-radius: 5px;
-  position: fixed; 
-  top: 95px;
-  left: 20px;
-  border: none;
-  cursor: pointer;
-  transition: background-color 0.3s ease;
-  width: auto; 
-  max-width: 200px; 
-  box-sizing: border-box; 
-}
+
   .add-button:hover {
     background-color: #218838; 
   }
 
-  .listado-reserva {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 30px;
-    justify-content: center;
-    padding: 30px;
-  }
-  
+  .boton-superior-centrado {
+  position: fixed;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 1000;
+}
+
+.buscador-fecha {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 20px;
+  gap: 10px; /* Espacio entre input y botón */
+  color: white; /* Hace que el label también sea blanco */
+}
+
+.buscador-fecha input[type="date"] {
+  padding: 8px;
+  font-size: 16px;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+  background-color: #1c1c1c;
+  color: white;
+}
+
+.limpiar-btn {
+  padding: 8px 12px;
+  font-size: 16px;
+  background-color: #dc3545;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.limpiar-btn:hover {
+  background-color: #c82333;
+}
+
+
+
+  .grupo-reservas {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 30px;
+  justify-content: flex-start; /* o center si lo prefieres */
+  padding: 0 30px 30px 30px;
+}
+.titulo-dia {
+  color: white;
+  font-size: 1.6rem;
+  font-weight: 600;
+  margin: 40px 30px 10px;
+  border-bottom: 2px solid rgba(255, 255, 255, 0.1);
+  padding-bottom: 5px;
+}
+
+.add-button {
+  display: flex;
+  align-items: center;
+  gap: 8px; /* espacio entre icono y texto */
+  background-color: #28a745;
+  color: white;
+  font-size: 14px;
+  padding: 10px 16px;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px 30px;
+}
+
+.add-button:hover {
+  background-color: #218838;
+}
+
+.icono {
+  font-size: 18px;
+  line-height: 1;
+}
+
+.modal-contenedor {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 1100;
+  background-color: #1a3b1a;
+  border-radius: 12px;
+  box-shadow: 0 0 30px rgba(0, 0, 0, 0.7);
+}
+
+.modal-fondo {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0,0,0,0.6);
+  z-index: 1000;
+}
+
