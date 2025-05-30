@@ -16,8 +16,9 @@ namespace DesignAPI.Models.DTOs.ReservaDTO
         [Required(ErrorMessage = "Grupo is required")]
         [MaxLength(50, ErrorMessage = "Max char is 50")]
         public string Grupo { get; set; }
-
+        [Required(ErrorMessage = "NombreProfesor is required")]
         public string NombreProfesor { get; set; }
+        [Required(ErrorMessage = "Estado is required")]
         public string Estado { get; set; }
     }
 }

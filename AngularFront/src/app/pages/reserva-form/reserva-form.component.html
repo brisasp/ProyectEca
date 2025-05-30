@@ -2,37 +2,37 @@
   <form (ngSubmit)="crearReserva()" #reservaForm="ngForm" class="formulario">
     <div class="mb-3">
       <label for="nombreProfesor" class="form-label">Nombre del profesor</label>
-      <input type="text" class="form-control" id="nombreProfesor" [(ngModel)]="reserva.nombreProfesor" name="nombreProfesor" required />
-    </div>
-
-    <div class="mb-3">
-      <label for="correo" class="form-label">Correo electrónico</label>
-      <input type="email" class="form-control" id="correo" [(ngModel)]="reserva.correo" name="correo" required />
+      <input type="text" class="form-control" id="nombreProfesor" [(ngModel)]="reserva.nombreProfesor" name="nombreProfesor" [ngModelOptions]="{ standalone: true }" />
     </div>
 
     <div class="mb-3">
       <label for="grupo" class="form-label">Grupo</label>
-      <input type="text" class="form-control" id="grupo" [(ngModel)]="reserva.grupo" name="grupo" required />
+      <input type="text" class="form-control" id="grupo" [(ngModel)]="reserva.grupo" name="grupo" required [ngModelOptions]="{ standalone: true }" />
     </div>
 
     <div class="mb-3">
   <label for="fecha" class="form-label">Fecha</label>
-  <input type="date" class="form-control" id="fecha" [(ngModel)]="reserva.fecha" name="fecha" required />
+  <input type="date" class="form-control" id="fecha" [(ngModel)]="reserva.fecha" name="fecha" required (ngModelChange)="validarFecha($event)" />
+</div>
+    <div class="row">
+  <div class="col">
+    <label for="horaInicio" class="form-label">Hora inicio</label>
+    <select id="horaInicio" class="form-control" [(ngModel)]="reserva.horaInicio" name="horaInicio" (change)="actualizarHoraFin()" required>
+      <option *ngFor="let franja of franjas" [value]="franja.horaInicio">
+        {{ franja.horaInicio }}
+      </option>
+    </select>
+  </div>
+  <div class="col">
+    <label for="horaFin" class="form-label">Hora fin</label>
+    <input type="text" class="form-control" id="horaFin" [(ngModel)]="reserva.horaFin" name="horaFin" readonly />
+  </div>
 </div>
 
 
-    <div class="row">
-      <div class="col">
-        <label for="horaInicio" class="form-label">Hora inicio</label>
-        <input type="time" class="form-control" id="horaInicio" [(ngModel)]="reserva.horaInicio" name="horaInicio" required />
-      </div>
-      <div class="col">
-        <label for="horaFin" class="form-label">Hora fin</label>
-        <input type="time" class="form-control" id="horaFin" [(ngModel)]="reserva.horaFin" name="horaFin" required />
-      </div>
-    </div>
 
     <div class="text-end mt-4">
+      <input type="hidden" [(ngModel)]="reserva.estado" name="estado" value="Pendiente" required [ngModelOptions]="{ standalone: true }" />
       <button type="submit" class="btn btn-success mx-auto" [disabled]="reservaForm.invalid">
         Mandar solicitud
       </button>

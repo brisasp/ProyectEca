@@ -3,6 +3,7 @@ import { propuestaModel } from '../models/propuestaModel';
 import { CreatePropuestaModel } from '../models/CreatePropuestaModel';
 import { CreateUsuarioModel } from '../models/create-usuario-model';
 import { UsuarioModel } from '../models/usuario-model';
+import { FranjaHorario } from '../models/franja-horaria.model';
 
 @Injectable({
   providedIn: 'root'
@@ -33,13 +34,21 @@ export class ReservaService {
   }
 
   async crearReserva(data: any): Promise<any> {
-    const res = await fetch(`${this.baseUrl}/crear`, {
+    const res = await fetch(`${this.baseUrl}`, {
       method: 'POST',
       headers: this.getAuthHeaders(),
-      body: JSON.stringify(data)
+      body: JSON.stringify({ createDto: data })
     });
     return await res.json();
   }
+
+async getDiasNoLectivos(): Promise<string[]> {
+  const res = await fetch('https://localhost:7016/api/DiaNoLectivo', {
+    headers: this.getAuthHeaders()
+  });
+  return await res.json(); // asegúrate que la API devuelva un array de strings tipo "2025-12-24"
+}
+
 
   async cambiarEstado(reservaId: number, estado: string): Promise<any> {
     const body = { reservaId, estado };
@@ -53,6 +62,12 @@ export class ReservaService {
 
  async getTodasReservas(): Promise<any[]> {
   const res = await fetch(`${this.baseUrl}`, {
+    headers: this.getAuthHeaders()
+  });
+  return await res.json();
+}
+async getFranjas(): Promise<FranjaHorario[]> {
+  const res = await fetch('https://localhost:7016/api/FranjaHorario', {
     headers: this.getAuthHeaders()
   });
   return await res.json();
