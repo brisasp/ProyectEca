@@ -63,12 +63,23 @@ async ngOnInit():Promise<void>  {
     console.error('Error cargando días no lectivos:', error);
   }
 }
- validarFecha(fechaSeleccionada: string) {
-    if (this.diasNoLectivos.includes(fechaSeleccionada)) {
-      alert('No puedes reservar en un día no lectivo');
-      this.reserva.fecha = '';
-    }
+validarFecha(fechaSeleccionada: string) {
+  const fecha = new Date(fechaSeleccionada);
+  const diaSemana = fecha.getDay(); // 0 = domingo, 6 = sábado
+
+  if (diaSemana === 0 || diaSemana === 6) {
+    alert('No puedes reservar en sábado o domingo');
+    this.reserva.fecha = '';
+    return;
   }
+
+  if (this.diasNoLectivos.includes(fechaSeleccionada)) {
+    alert('No puedes reservar en un día no lectivo');
+    this.reserva.fecha = '';
+    return;
+  }
+}
+
 
 async crearReserva() {
   try {
@@ -78,6 +89,7 @@ async crearReserva() {
     const respuesta = await this.reservaService.crearReserva(this.reserva);
 
     console.log('Reserva guardada con éxito:', respuesta);
+     alert('✅ Tu solicitud se ha mandado correctamente.');
     this.reservaCreada.emit(); // Notifica al padre
   } catch (error) {
     console.error('Error al guardar la reserva:', error);

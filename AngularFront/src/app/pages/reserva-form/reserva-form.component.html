@@ -4,6 +4,11 @@
       <label for="nombreProfesor" class="form-label">Nombre del profesor</label>
       <input type="text" class="form-control" id="nombreProfesor" [(ngModel)]="reserva.nombreProfesor" name="nombreProfesor" [ngModelOptions]="{ standalone: true }" />
     </div>
+    
+    <div class="mb-3">
+  <label for="correoProfesor" class="form-label">Correo del profesor</label>
+  <input type="email" class="form-control" id="correoProfesor" [(ngModel)]="reserva.correoProfesor" name="correoProfesor" required />
+</div>
 
     <div class="mb-3">
       <label for="grupo" class="form-label">Grupo</label>
