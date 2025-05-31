@@ -4,5 +4,6 @@ export interface CreateReserva {
   horaFin: string;         // "12:00"
   grupo: string;
   nombreProfesor: string;
+  correoProfesor: string;
   estado: string;          // "Pendiente", "Aprobada", "Rechazada"
 }

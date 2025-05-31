@@ -19,13 +19,14 @@
     <label for="horaInicio" class="form-label">Hora inicio</label>
     <select id="horaInicio" class="form-control" [(ngModel)]="reserva.horaInicio" name="horaInicio" (change)="actualizarHoraFin()" required>
       <option *ngFor="let franja of franjas" [value]="franja.horaInicio">
-        {{ franja.horaInicio }}
+        {{ franja.horaInicio.slice(0, 5)}}
       </option>
     </select>
   </div>
   <div class="col">
     <label for="horaFin" class="form-label">Hora fin</label>
-    <input type="text" class="form-control" id="horaFin" [(ngModel)]="reserva.horaFin" name="horaFin" readonly />
+    <input type="text" class="form-control" [value]="reserva.horaFin?.slice(0,5)" readonly />
+
   </div>
 </div>
 

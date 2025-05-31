@@ -11,6 +11,8 @@ namespace LoginRegister.Models
 
         [JsonPropertyName("nombreProfesor")]
         public string NombreProfesor { get; set; }
+        [JsonPropertyName("correoProfesor")]
+        public string CorreoProfesor { get; set; } = string.Empty;
 
         [JsonPropertyName("fecha")]
         public DateTime Fecha { get; set; }

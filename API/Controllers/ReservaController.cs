@@ -90,12 +90,12 @@
 
 
             // Obtener información del usuario autenticado
-            var correo = "Rafael";//User?.Claims?.FirstOrDefault(c => c.Type == "email")?.Value ?? "sin-correo";
-            var nombre = "Rafael@ejemplo.com";//User?.Claims?.FirstOrDefault(c => c.Type == "name")?.Value ?? "Usuario desconocido";
+            //var correo = "Rafael";//User?.Claims?.FirstOrDefault(c => c.Type == "email")?.Value ?? "sin-correo";
+            //var nombre = "Rafael@ejemplo.com";//User?.Claims?.FirstOrDefault(c => c.Type == "name")?.Value ?? "Usuario desconocido";
 
             var reserva = _mapper.Map<ReservaEntity>(dto);
-            reserva.CorreoProfesor = correo;
-            reserva.NombreProfesor = nombre;
+            //reserva.CorreoProfesor = correo;
+            //reserva.NombreProfesor = nombre;
             reserva.Estado = EstadoReserva.Pendiente;
             reserva.FechaSolicitud = DateTime.UtcNow;
 

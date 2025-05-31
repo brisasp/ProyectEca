@@ -18,6 +18,7 @@ namespace DesignAPI.Models.DTOs.ReservaDTO
         public string Grupo { get; set; }
         [Required(ErrorMessage = "NombreProfesor is required")]
         public string NombreProfesor { get; set; }
+        public string CorreoProfesor { get; set; }
         [Required(ErrorMessage = "Estado is required")]
         public string Estado { get; set; }
     }

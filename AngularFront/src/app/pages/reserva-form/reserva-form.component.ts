@@ -28,6 +28,7 @@ export class ReservaFormComponent {
   horaFin: '',
   grupo: '',
   nombreProfesor: '',
+  correoProfesor: '',
   estado: 'Pendiente'
 };
 

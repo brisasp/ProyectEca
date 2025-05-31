@@ -9,7 +9,7 @@ namespace DesignAPI.Models.Entity
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int Id { get; set; }
 
-        [Required]
+        //[Required]
         public string CorreoProfesor { get; set; }
 
         [Required]

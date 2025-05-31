@@ -1,6 +1,6 @@
 <div class="reserva-card">
   <h3>Reserva</h3>
-  <p><strong>Fecha:</strong> {{ reserva.fecha | date:'fullDate' }} a las {{ reserva.horaInicio }} - {{ reserva.horaFin }}</p>
+  <p><strong>Fecha:</strong> {{ reserva.fecha | date:'fullDate' }} a las {{ reserva.horaInicio.slice(0,5) }} - {{ reserva.horaFin.slice(0,5) }}</p>
   <p><strong>Profesor:</strong> {{ reserva.nombreProfesor }}</p>
   <p><strong>Grupo:</strong> {{ reserva.grupo }}</p>
 <p><strong>Estado:</strong> 

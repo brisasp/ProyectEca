@@ -103,6 +103,9 @@ public partial class DashboardViewModel : ViewModelBase
         try
         {
             reserva.Estado = nuevoEstado;
+            reserva.NombreProfesor ??= "Brisa";
+            reserva.CorreoProfesor ??= "brisa@iescomercio.com";
+
             await _reservaServiceToApi.PutReserva(reserva);
 
             MessageBox.Show($"Estado actualizado a: {reserva.Estado}"); // 🔍 Añadido para confirmar
