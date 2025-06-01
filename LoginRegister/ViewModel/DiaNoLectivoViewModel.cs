@@ -27,7 +27,7 @@ public partial class DiaNoLectivoViewModel : ViewModelBase
       
         _httpJsonProvider = httpJsonProvider;
 
-        ItemsPerPage = 5;
+        ItemsPerPage =8;
         CurrentPage = 0;
 
      }

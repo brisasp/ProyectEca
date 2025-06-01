@@ -20,8 +20,6 @@ export class ReservaFormComponent {
   franjas: FranjaHorario[] = [];
   diasNoLectivos: string[] = [];
 
-
-
  reserva: CreateReserva = {
   fecha: '',
   horaInicio: '',

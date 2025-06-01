@@ -21,7 +21,7 @@ public partial class FranjaHorariaViewModel : ViewModelBase
         _franjaService = franjaService;
         _todasLasFranjas = new List<FranjaHorarioDTO>();
         PagedFranjas = new ObservableCollection<FranjaHorarioDTO>();
-        ItemsPerPage = 5;
+        ItemsPerPage = 8;
         CurrentPage = 0;
     }
 

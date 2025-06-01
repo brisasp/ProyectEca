@@ -25,7 +25,7 @@
             _reservaRepository = reservaRepository;
         }
         // GET: api/franjahorario/activos
-        [Authorize(Roles = "admin")]
+        [Authorize(Roles = "admin,profesor")]
         [HttpGet("activos")]
         public async Task<IActionResult> GetActivos()
         {
@@ -36,7 +36,7 @@
 
 
         // GET: api/franjahorario/disponibles?fecha=2025-05-08
-        [Authorize(Roles = "admin")]
+        [Authorize(Roles = "admin,profesor")]
         [HttpGet("disponibles")]
 
         public async Task<IActionResult> GetDisponibles([FromQuery] DateTime fecha)

@@ -26,6 +26,8 @@ export class ReservaService {
     });
     return await res.json();
   }
+
+
  async getMisReservas(): Promise<any[]> {
     const res = await fetch(`${this.baseUrl}/mis-reservas`, {
       headers: this.getAuthHeaders()
@@ -33,6 +35,7 @@ export class ReservaService {
     return await res.json();
   }
 
+  
   async crearReserva(data: any): Promise<any> {
     const res = await fetch(`${this.baseUrl}`, {
       method: 'POST',
@@ -41,6 +44,7 @@ export class ReservaService {
     });
     return await res.json();
   }
+
 
 async getDiasNoLectivos(): Promise<string[]> {
   const res = await fetch('https://localhost:7016/api/DiaNoLectivo', {

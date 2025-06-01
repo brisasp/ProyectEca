@@ -56,7 +56,7 @@
 
         // POST: api/reserva [Authorize] // profesores y admins
         [HttpPost("crear")]
-        [Authorize(Roles = "admin")]
+        [Authorize(Roles = "admin, profesor")]
         public async Task<IActionResult> CrearReserva([FromBody] CreateReservaDTO dto)
         {
             if (!ModelState.IsValid)
@@ -103,8 +103,6 @@
             await _reservaRepository.Save();
 
             return Ok(new { mensaje = "Reserva solicitada correctamente." });
-
-
 
         }
 

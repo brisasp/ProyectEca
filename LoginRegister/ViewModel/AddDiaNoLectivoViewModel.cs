@@ -2,6 +2,7 @@
 using CommunityToolkit.Mvvm.Input;
 using LoginRegister.Interface;
 using LoginRegister.Models;
+using LoginRegister.View;
 using Microsoft.Extensions.DependencyInjection;
 using System.Collections.ObjectModel;
 using System.Windows;
@@ -22,8 +23,16 @@ namespace LoginRegister.ViewModel
         {
             _diaNoLectivoServiceToApi = diaNoLectivoServiceToApi;
 
-        }
 
+        }
+        [RelayCommand]
+        public async Task VolverDashboard()
+        {
+            await App.Current.Services.GetService<MainViewModel>()
+                .SetAndLoadViewModelAsync(
+                    App.Current.Services.GetService<MainViewModel>().DashboardViewModel
+                );
+        }
 
         [RelayCommand]
         public async Task Add()
