@@ -23,7 +23,7 @@ public partial class DashboardViewModel : ViewModelBase
 
         Reservas = new List<ReservaDTO>();
         PagedReservas = new ObservableCollection<ReservaDTO>();
-        ItemsPerPage = 8;
+        ItemsPerPage = 20;
         CurrentPage = 0;
     }
 

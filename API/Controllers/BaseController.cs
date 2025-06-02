@@ -9,6 +9,7 @@
     using global::AutoMapper;
     using global::DesignAPI.Repository.IRepository;
     using System.Runtime.ConstrainedExecution;
+    using DesignAPI.Models.Entity;
 
     [ApiController]
     [Route("api/[controller]")]
@@ -66,6 +67,7 @@
             }
         }
 
+
         [Authorize(Roles = "admin")]
         [HttpPost]
         [ProducesResponseType(StatusCodes.Status201Created)]
@@ -104,7 +106,20 @@
 
                 _mapper.Map(dto, entity);
                 await _repository.UpdateAsync(entity);
-
+                if (entity is ReservaEntity reserva && reserva.Estado == EstadoReserva.Rechazada)
+                {
+                    var emailService = HttpContext.RequestServices.GetRequiredService<EmailService>();
+                    await emailService.EnviarCorreo(
+                        reserva.CorreoProfesor,
+                        "Reserva rechazada",
+                        $@"
+                <h3>Tu reserva ha sido rechazada</h3>
+                <p><strong>Fecha:</strong> {reserva.Fecha:yyyy-MM-dd}</p>
+                <p><strong>Hora:</strong> {reserva.HoraInicio} - {reserva.HoraFin}</p>
+                <p><strong>Grupo:</strong> {reserva.Grupo}</p>
+                <p><strong>Motivo:</strong> Contacta con el administrador para más información.</p>"
+                    );
+                }
                 return Ok(_mapper.Map<TDto>(entity));
             }
             catch (Exception ex)
