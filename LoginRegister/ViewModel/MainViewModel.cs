@@ -44,13 +44,13 @@ public partial class MainViewModel : ViewModelBase
 
 
     [RelayCommand]
-    public async Task SelectViewModelAsync(object? parameter)
-    {
-        if (parameter is ViewModelBase viewModel)
-        {
-            SelectedViewModel = viewModel;
-            await LoadAsync(); // Esto es lo que lanza LoadAsync()
-        }
+     public async Task SelectViewModelAsync(object? parameter)
+     {
+    if (parameter is ViewModelBase viewModel)
+     {
+      SelectedViewModel = viewModel;
+       await LoadAsync(); // Esto es lo que lanza LoadAsync()
+      }
     }
 
 

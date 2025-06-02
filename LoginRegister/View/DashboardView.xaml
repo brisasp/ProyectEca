@@ -65,6 +65,11 @@
 
                 Background="Black" 
                 Foreground="White"/>
+       
+            <Button Content="🔄 Recargar" Command="{Binding RecargarReservasCommand}" Width="100" Margin="352,281,352,130"/>
+
+
+
         <Button Content="Franjas Horarias" 
             HorizontalAlignment="Right" 
             VerticalAlignment="Top" 

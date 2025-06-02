@@ -41,6 +41,7 @@ public partial class DashboardViewModel : ViewModelBase
 
     [ObservableProperty]
     private int itemsPerPage;
+    private Timer? _refrescoTimer;
 
     public int TotalPages => (int)Math.Ceiling((double)Reservas.Count / ItemsPerPage);
 
@@ -89,6 +90,14 @@ public partial class DashboardViewModel : ViewModelBase
     {
         await CambiarEstadoReservaAsync(reserva, "Aprobada");
     }
+
+    [RelayCommand]
+    public async Task RecargarReservas()
+    {
+        await LoadAsync();
+    }
+
+
 
     [RelayCommand]
     public async Task RechazarReserva(ReservaDTO reserva)
