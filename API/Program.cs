@@ -137,4 +137,78 @@ app.UseAuthentication();
 app.UseAuthorization();
 app.MapControllers();
 
+async Task SeedRolesAndAdminAsync(IServiceProvider serviceProvider)
+{
+    var roleManager = serviceProvider.GetRequiredService<RoleManager<IdentityRole>>();
+    var userManager = serviceProvider.GetRequiredService<UserManager<AppUser>>();
+    var context = serviceProvider.GetRequiredService<TimeSpanConverter>(); //
+
+
+    string[] roles = { "admin", "profesor" };
+    foreach (var role in roles)
+    {
+        if (!await roleManager.RoleExistsAsync(role))
+            await roleManager.CreateAsync(new IdentityRole(role));
+    }
+
+    var adminEmail = "admin@ateca.com";
+    var adminUser = await userManager.FindByEmailAsync(adminEmail);
+    if (adminUser == null)
+    {
+        var newUser = new AppUser
+        {
+            UserName = adminEmail,
+            Email = adminEmail,
+            Name = "Administrador"
+        };
+        var result = await userManager.CreateAsync(newUser, "Admin123*");
+
+        if (result.Succeeded)
+        {
+            await userManager.AddToRoleAsync(newUser, "admin");
+        }
+    }
+    //para hacer seed de DiasNoLectivos tambien
+    var diasPredeterminados = new List<DiaNoLectivoEntity>
+{
+    
+    new() { Fecha = new DateTime(2025, 12, 25), Motivo = "Navidad" },
+    new() { Fecha = new DateTime(2026, 1, 6), Motivo = "Día de Reyes" },
+    new() { Fecha = new DateTime(2026, 4, 2), Motivo = "Jueves Santo" },
+};
+
+    bool hayCambios = false;
+
+    foreach (var dia in diasPredeterminados)
+    {
+        if (!context.DiasNoLectivos.Any(d => d.Fecha == dia.Fecha))
+        {
+            context.DiasNoLectivos.Add(dia);
+            hayCambios = true;
+        }
+    }
+
+    if (hayCambios)
+    {
+        await context.SaveChangesAsync();
+        Console.WriteLine("Días no lectivos añadidos.");
+    }
+    else
+    {
+        Console.WriteLine("No se añadieron días no lectivos porque ya existían.");
+    }
+}
+
+
+
+
+
+using (var scope = app.Services.CreateScope())
+{
+    var services = scope.ServiceProvider;
+    await SeedRolesAndAdminAsync(services);
+}
+
+
+
 app.Run();
