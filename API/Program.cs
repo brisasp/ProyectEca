@@ -34,8 +34,10 @@ builder.Services.AddScoped<IDiaNoLectivoRepository, DiaNoLectivoRepository>();
 builder.Services.AddScoped<IFranjaHorarioRepository, FranjaHorarioRepository>();
 builder.Services.AddScoped<IUserRepository, UserRepository>();
 builder.Services.AddAutoMapper(typeof(ApplicationMapper));
-//builder.Services.Configure<EmailSettings>(builder.Configuration.GetSection("EmailSettings"));
-//builder.Services.AddSingleton<EmailService>();
+builder.Services.Configure<EmailSettings>(builder.Configuration.GetSection("EmailSettings"));
+builder.Services.AddSingleton<EmailService>();
+
+
 
 
 // Logger setup
@@ -175,6 +177,7 @@ async Task SeedRolesAndAdminAsync(IServiceProvider serviceProvider)
     new() { Fecha = new DateTime(2025, 12, 25), Motivo = "Navidad" },
     new() { Fecha = new DateTime(2026, 1, 6), Motivo = "Día de Reyes" },
     new() { Fecha = new DateTime(2026, 4, 2), Motivo = "Jueves Santo" },
+    //aqui se añadirian todos los dias no lectivos del calendario escolar
 };
 
     bool hayCambios = false;

@@ -20,11 +20,16 @@
     {
         private readonly IReservaRepository _reservaRepository;
         private readonly IDiaNoLectivoRepository _diaNoLectivoRepository;
-        public ReservaController(IReservaRepository ReservaRepository, IDiaNoLectivoRepository diaNoLectivoRepository, IMapper mapper, ILogger<ReservaController> logger)
+        private readonly EmailService _emailService;
+        private readonly IConfiguration _config;
+
+        public ReservaController(IReservaRepository ReservaRepository, IDiaNoLectivoRepository diaNoLectivoRepository, IMapper mapper, ILogger<ReservaController> logger, EmailService emailService, IConfiguration config)
             : base(ReservaRepository, mapper, logger)
         {
             _reservaRepository = ReservaRepository;
             _diaNoLectivoRepository = diaNoLectivoRepository;
+            _emailService = emailService;
+            _config = config;
         }
 
         // GET: api/reserva/pendientes
@@ -100,6 +105,19 @@
 
             await _reservaRepository.CreateAsync(reserva);
             await _reservaRepository.Save();
+
+            var adminEmail = _config["EmailSettings:AdminEmail"];
+            await _emailService.EnviarCorreo(
+                 adminEmail,
+                 "Nueva solicitud de reserva",
+                 $@"
+                <h3>Se ha realizado una nueva reserva</h3>
+                <p><strong>Profesor:</strong> {dto.NombreProfesor} ({dto.CorreoProfesor})</p>
+                <p><strong>Fecha:</strong> {dto.Fecha:yyyy-MM-dd}</p>
+                <p><strong>Hora:</strong> {dto.HoraInicio} - {dto.HoraFin}</p>
+                <p><strong>Grupo:</strong> {dto.Grupo}</p>
+                <p><strong>Estado:</strong> Pendiente</p>"
+             );
 
             return Ok(new { mensaje = "Reserva solicitada correctamente." });
         }
