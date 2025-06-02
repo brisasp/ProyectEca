@@ -91,7 +91,7 @@ async crearReserva() {
     this.reservaCreada.emit(); // Notifica al padre
   } catch (error) {
     console.error('Error al guardar la reserva:', error);
-    alert('Error al guardar la reserva');
+    alert('Ya existe una reserva con esa franja horaria, cambia de hora');
   }
 }
 

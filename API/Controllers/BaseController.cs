@@ -66,12 +66,11 @@
             }
         }
 
-        [AllowAnonymous]
         [Authorize(Roles = "admin")]
         [HttpPost]
         [ProducesResponseType(StatusCodes.Status201Created)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
-        public async Task<IActionResult> Create([FromBody] TCreateDto createDto)
+        public virtual async Task<IActionResult> Create([FromBody] TCreateDto createDto)
         {
             try
             {

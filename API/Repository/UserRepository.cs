@@ -87,7 +87,8 @@ namespace DesignAPI.Repository
             UserLoginResponseDto userLoginResponseDto = new UserLoginResponseDto
             {
                 Token = tokenHandler.WriteToken(jwtToken),
-                User = user
+                User = user,
+          
             };
             return userLoginResponseDto;
         }

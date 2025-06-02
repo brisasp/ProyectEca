@@ -6,12 +6,12 @@
     using DesignAPI.Models.DTOs;
     using DesignAPI.Models.Entity;
     using DesignAPI.Repository;
-
     using DesignAPI.Repository.IRepository;
     using DesignAPI.Controllers;
     using global::AutoMapper;
     using DesignAPI.Models.DTOs.ReservaDTO;
     using Microsoft.AspNetCore.Authorization;
+    using Humanizer;
 
     [Authorize(Roles = "admin")]
     [Route("api/[controller]")]
@@ -54,10 +54,9 @@
             return Ok(resultado);
         }
 
-        // POST: api/reserva [Authorize] // profesores y admins
-        [HttpPost("crear")]
+        [HttpPost]
         [Authorize(Roles = "admin, profesor")]
-        public async Task<IActionResult> CrearReserva([FromBody] CreateReservaDTO dto)
+        public override async Task<IActionResult> Create([FromBody] CreateReservaDTO dto)
         {
             if (!ModelState.IsValid)
                 return BadRequest(ModelState);
@@ -103,9 +102,6 @@
             await _reservaRepository.Save();
 
             return Ok(new { mensaje = "Reserva solicitada correctamente." });
-
         }
-
     }
-
 }

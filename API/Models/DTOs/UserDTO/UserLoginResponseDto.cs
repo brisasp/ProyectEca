@@ -9,5 +9,7 @@ namespace DesignAPI.Models.DTOs.UserDTO
         public AppUser User { get; set; }
         public string Token { get; set; }
 
+
+
     }
 }

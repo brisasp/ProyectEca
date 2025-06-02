@@ -13,6 +13,7 @@ using DesignAPI.Repository;
 using System.Text;
 using DesignAPI.AutoMapper;
 using RestAPI.Models.Entity;
+using API.Configuration;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -33,6 +34,9 @@ builder.Services.AddScoped<IDiaNoLectivoRepository, DiaNoLectivoRepository>();
 builder.Services.AddScoped<IFranjaHorarioRepository, FranjaHorarioRepository>();
 builder.Services.AddScoped<IUserRepository, UserRepository>();
 builder.Services.AddAutoMapper(typeof(ApplicationMapper));
+//builder.Services.Configure<EmailSettings>(builder.Configuration.GetSection("EmailSettings"));
+//builder.Services.AddSingleton<EmailService>();
+
 
 // Logger setup
 builder.Logging.ClearProviders();

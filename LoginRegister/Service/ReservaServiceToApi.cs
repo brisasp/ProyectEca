@@ -101,6 +101,7 @@ namespace LoginRegister.Service
             }
         }
 
+        //no lo pide pero podemos meterlo, en plan podemos coger y hacer boton de eliminar reservas, sino borrar este metodo
         public async Task DeleteReserva(int id)
         {
             try
