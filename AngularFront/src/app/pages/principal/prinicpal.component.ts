@@ -3,6 +3,7 @@ import { Component, OnInit } from '@angular/core';
 import { RouterLink } from '@angular/router';
 import { Router } from '@angular/router';
 import { FormsModule } from '@angular/forms';
+import { KeyValue } from '@angular/common';
 import { ReservaFormComponent } from '../../pages/reserva-form/reserva-form.component';
 import { ReservaComponent} from 'src/app/component/reserva/reserva.component';
 import { ReservaService } from 'src/app/service/reserva.service';
@@ -65,6 +66,13 @@ export class PrincipalComponent implements OnInit{
       }
       agrupadas[fecha].push(reserva);
     });
+     Object.keys(agrupadas).forEach(fecha => {
+    agrupadas[fecha].sort((a, b) => {
+      const fechaA = new Date(`${a.fecha}T${a.horaInicio}`);
+      const fechaB = new Date(`${b.fecha}T${b.horaInicio}`);
+      return fechaA.getTime() - fechaB.getTime();
+    });
+  });
     return agrupadas;
   }
 
@@ -91,7 +99,10 @@ toggleFormulario() {
 cerrarFormulario() {
   this.mostrarFormulario = false;
 }
-
+ // Función para ordenar fechas en el *ngFor con keyvalue
+  keyAscOrder = (a: KeyValue<string, any>, b: KeyValue<string, any>): number => {
+    return new Date(a.key).getTime() - new Date(b.key).getTime();
+  };
 guardarReserva(reserva: any) {
   console.log('Reserva guardada:', reserva);
   // Aquí puedes llamar a tu servicio para hacer POST a la API

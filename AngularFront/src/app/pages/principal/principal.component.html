@@ -20,7 +20,7 @@
 </div>
 
 
-<div *ngFor="let grupo of reservasAgrupadas | keyvalue">
+<div *ngFor="let grupo of reservasAgrupadas | keyvalue: keyAscOrder">
   <h2 class="titulo-dia">{{ grupo.key | date: 'fullDate' }}</h2>
   <div class="grupo-reservas">
     <app-reserva *ngFor="let reserva of grupo.value" [reserva]="reserva"></app-reserva>
