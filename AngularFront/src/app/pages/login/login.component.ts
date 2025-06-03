@@ -5,6 +5,7 @@ import { LoginDTO } from '../../models/loginDTO';
 import { firstValueFrom } from 'rxjs';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
+import { SocialAuthService, GoogleLoginProvider, SocialUser } from '@abacritt/angularx-social-login';
 
 @Component({
   selector: 'app-login',
@@ -13,10 +14,12 @@ import { FormsModule } from '@angular/forms';
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.css']
 })
+
 export class LoginComponent {
   username: string = '';
   password: string = '';
   isFadingOut = false;
+  user: SocialUser | null = null;
 
   constructor(private authService: AuthService, private router: Router) {}
 

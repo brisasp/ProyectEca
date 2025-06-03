@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { LoginDTO } from '../models/loginDTO';
+import { LoginResponse } from '../models/loginResponse';
 
 @Injectable({
   providedIn: 'root'
@@ -15,30 +16,26 @@ export class AuthService {
     this.token = localStorage.getItem('authToken');
   }
 
-  login(credentials: LoginDTO): Observable<any> {
-    return new Observable<any>(observer => {
-      console.log('Credenciales enviadas:', credentials);
-      fetch(this.loginUrl, {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(credentials)
-      })
-      .then(response => response.json())
-      .then(data => {
-        console.log('Login response:', data);
-        if (data?.result?.token) {
-          this.setToken(data.result.token);
-        } else {
-          console.warn('⚠️ No se recibió un token válido:', data);
-        }
-        observer.next(data); 
-        observer.complete(); 
-      })
-      .catch(error => {
-        observer.error(error);
-      });
+  login(credentials: LoginDTO): Observable<LoginResponse> {
+  return new Observable<LoginResponse>(observer => {
+    fetch(this.loginUrl, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(credentials)
+    })
+    .then(response => response.json())
+    .then((data: LoginResponse) => {
+      if (data?.result?.token) {
+        this.setToken(data.result.token);
+      }
+      observer.next(data);
+      observer.complete();
+    })
+    .catch(error => {
+      observer.error(error);
     });
-  }  
+  });
+} 
 
   setToken(token: string): void {
     this.token = token;
