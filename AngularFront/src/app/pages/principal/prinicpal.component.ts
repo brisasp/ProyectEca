@@ -40,6 +40,7 @@ export class PrincipalComponent implements OnInit{
       //const reservas = await this.reservaService.getPendientes();
       //this.reservasAgrupadas = this.agruparPorFecha(reservas);
       this.reservasTotales = await this.reservaService.getPendientes();
+       this.reservasTotales = this.reservasTotales.filter(r => r.estado.toLowerCase() !== 'rechazada');
     this.reservasAgrupadas = this.agruparPorFecha(this.reservasTotales);
     } catch (error) {
       console.error('Error al cargar reservas pendientes', error);
