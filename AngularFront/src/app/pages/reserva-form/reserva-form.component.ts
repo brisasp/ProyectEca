@@ -42,9 +42,20 @@ async ngOnInit():Promise<void>  {
       console.warn('No se recibió fechaSeleccionada como @Input.');
     }
 
- this.franjas = (await this.reservaService.getFranjas()).filter(f => f.activa);
- await this.cargarDiasNoLectivos();
-  }
+ //this.franjas = (await this.reservaService.getFranjas()).filter(f => f.activa);
+ //await this.cargarDiasNoLectivos();
+  //}
+this.franjas = (await this.reservaService.getFranjas())
+    .filter(f => f.activa)
+    .sort((a, b) => {
+      const [ah, am] = a.horaInicio.split(':').map(Number);
+      const [bh, bm] = b.horaInicio.split(':').map(Number);
+      return (ah * 60 + am) - (bh * 60 + bm);
+    });
+
+  await this.cargarDiasNoLectivos();
+}
+
 
   actualizarHoraFin() {
     const seleccionada = this.franjas.find(f => f.horaInicio === this.reserva.horaInicio);
